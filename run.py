@@ -21,6 +21,22 @@ def get_sales_data():
     print("Example: 32,41,11,16\n")
 
     data_str = input("Enter your data here: ")
-    print(f"The data provided is {data_str}")
+
+    sales_data = data_str.split(",")
+    validate_data(sales_data)
+
+def validate_data(values):
+    """
+    Inside the try, coverts all string values into integers.
+    Raised value error if string canot be converted into data,
+    or if there aren't exactly 4 values.
+    """
+    try:
+        if len(values) != 4:
+            raise ValueError(
+                f"Exatcly 4 values required, you provided {len(values)}"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")        
 
 get_sales_data()
