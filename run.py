@@ -32,6 +32,7 @@ def validate_data(values):
     or if there aren't exactly 4 values.
     """
     try:
+        [int(value) for value in values]
         if len(values) != 4:
             raise ValueError(
                 f"Exatcly 4 values required, you provided {len(values)}"
