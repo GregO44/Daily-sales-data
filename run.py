@@ -12,8 +12,15 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('daily sales data')
 
-sales = SHEET.worksheet('SQL')
+def get_sales_data():
+    """
+    Get sales figures input from the user
+    """
+    print("Please enter daily sales data from COB: ")
+    print("Data should be 4 numbers, seperated by commas.")
+    print("Example: 32,41,11,16\n")
 
-data = sales.get_all_values()
+    data_str = input("Enter your data here: ")
+    print(f"The data provided is {data_str}")
 
-print(data)
+get_sales_data()
