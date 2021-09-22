@@ -16,14 +16,20 @@ def get_sales_data():
     """
     Get sales figures input from the user
     """
-    print("Please enter daily sales data from COB: ")
-    print("Data should be 4 numbers, seperated by commas.")
-    print("Example: 32,41,11,16\n")
+    while True:
+        print("Please enter daily sales data from COB: ")
+        print("Data should be 4 numbers, seperated by commas.")
+        print("Example: 32,41,11,16\n")
 
-    data_str = input("Enter your data here: ")
+        data_str = input("Enter your data here: ")
 
-    sales_data = data_str.split(",")
-    validate_data(sales_data)
+        sales_data = data_str.split(",")
+
+        if validate_data(sales_data):
+            print("Data is valid!")
+            break
+    
+    return sales_data
 
 def validate_data(values):
     """
@@ -38,6 +44,9 @@ def validate_data(values):
                 f"Exatcly 4 values required, you provided {len(values)}"
             )
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")        
+        print(f"Invalid data: {e}, please try again.\n")
+        return False
 
-get_sales_data()
+    return True  
+
+data = get_sales_data()
